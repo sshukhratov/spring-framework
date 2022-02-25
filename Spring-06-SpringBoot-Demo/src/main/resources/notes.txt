@@ -1,0 +1,47 @@
+Sprint Project Structure:
+------------------------
+src/main/java : Contains application source code
+src/main/resources : Contains non-java resources
+src/test/java : Contains test code (unit test)
+------------------------
+mvnw and mwnd.cmd : These are maven wrapper scripts to build project without meaven installed on your machine
+------------------------
+pom.xml : Maven build specifications.
+------------------------
+CydeoApplication.java : Spring boot main class that bootstraps the project
+------------------------
+application.properties : Offers a place where we can specify configuration properties
+------------------------
+static : contains any static content (images, css, js, etc)
+------------------------
+templates : Contains template files that used to render content to the browser (Thymeleaf)
+------------------------
+CydeoApplicationTests : test class to ensure Spring application executed successfully
+-----------------------
+.iml : It is a file intellij creates to store the information for the modules you create
+============================================
+Build specifications :
+<parent> : Specifies the project has spring boot starter parent as its parent POM
+		   Parent POM provides dependency management for several liblaries commonly used in Spring Projects
+		   Take care of all the versions.
+------------------------
+-> All dependencies have the work started in their artifact ID.
+-> Your build files will be significantly smaller and easir to manage because you wont need to declare a dependency on every library you might need
+-> You are able to think of your dependencies in the terms of what capabilities they provide, rather that their library names (web started dependency)
+-> You are free from burden of worrying about library versions. You only need to worry about which version spring boot you are using.
+--------------------------
+Spring Boot plugin:
+-> provides a Maven Goal that enables you to run the application using maven
+-> ensures that all dependency libraries are included within executable JAR file
+======================================================
+BootStrapping the application :
+Reason: running application from executable JAR, it is important to have a main class that will be executed when that JAR files is run.
+
+@SprintBootApplication : is a composite annotatioin that combines the following annotations:
+- @SpringBootConfiguration : Designates this class as a @Configuration class where you can add Java Based Spring framework configuration here
+- @EnableAutoConfiguration : Enables Spring Boot automatic configurations of components that could be used
+- @ComponentScan : Enables component scanning. Lets to declare other classes with annotation like @Component detect and registed components in Spring application context
+---------------------
+main() method : calls a static run method on SpringApplication class, which performs the actual bootstrapping of application
+- creates Spring Application context container
+- SpringApplication.run(CydeoApplication.class) creates container object
